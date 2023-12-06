@@ -1,11 +1,11 @@
-# ±¸ÍüÂ¼Ä£Ê½Memento
-## ÎÊÌâ
-³£ÓÃµÄÎÄ×Ö±à¼­Æ÷¶¼Ö§³Ö±£´æºÍ»Ö¸´Ò»¶ÎÎÄ×ÖµÄ²Ù×÷£¬Èç¹ûÎÒÃÇÏëÒªÔÚ³ÌĞòÖĞÊµÏÖ±£´æºÍ»Ö¸´µÄ¹¦ÄÜ¸ÃÔõÃ´×öÄØ£¿
+# å¤‡å¿˜å½•æ¨¡å¼Memento
+## é—®é¢˜
+å¸¸ç”¨çš„æ–‡å­—ç¼–è¾‘å™¨éƒ½æ”¯æŒä¿å­˜å’Œæ¢å¤ä¸€æ®µæ–‡å­—çš„æ“ä½œï¼Œå¦‚æœæˆ‘ä»¬æƒ³è¦åœ¨ç¨‹åºä¸­å®ç°ä¿å­˜å’Œæ¢å¤çš„åŠŸèƒ½è¯¥æ€ä¹ˆåšå‘¢ï¼Ÿ
 
-ÎÒÃÇĞèÒªÌá¹©±£´æºÍ»Ö¸´µÄ¹¦ÄÜ£¬µ±±£´æ¹¦ÄÜ±»µ÷ÓÃÊ±£¬¾Í»áÉú³Éµ±Ç°¶ÔÏóµÄ¿ìÕÕ£¬ÔÚ»Ö¸´¹¦ÄÜ±»µ÷ÓÃÊ±£¬¾Í»áÓÃÖ®Ç°±£´æµÄ¿ìÕÕ¸²¸Çµ±Ç°µÄ¿ìÕÕ¡£Õâ¿ÉÒÔÊ¹ÓÃ±¸ÍüÂ¼Ä£Ê½À´×ö¡£
+æˆ‘ä»¬éœ€è¦æä¾›ä¿å­˜å’Œæ¢å¤çš„åŠŸèƒ½ï¼Œå½“ä¿å­˜åŠŸèƒ½è¢«è°ƒç”¨æ—¶ï¼Œå°±ä¼šç”Ÿæˆå½“å‰å¯¹è±¡çš„å¿«ç…§ï¼Œåœ¨æ¢å¤åŠŸèƒ½è¢«è°ƒç”¨æ—¶ï¼Œå°±ä¼šç”¨ä¹‹å‰ä¿å­˜çš„å¿«ç…§è¦†ç›–å½“å‰çš„å¿«ç…§ã€‚è¿™å¯ä»¥ä½¿ç”¨å¤‡å¿˜å½•æ¨¡å¼æ¥åšã€‚
 
-## ½â¾ö
-Çë¿´ÒÔÏÂ´úÂë£º
+## è§£å†³
+è¯·çœ‹ä»¥ä¸‹ä»£ç ï¼š
 ```go
 package memento
 
@@ -40,29 +40,29 @@ func (t *Text) Show() {
   fmt.Println("content:", t.content)
 }
 ```
-ÎÒÃÇ¶¨ÒåÁËtextMemento½á¹¹ÌåÓÃÓÚ±£´æµ±Ç°¿ìÕÕ£¬²¢ÔÚLoad·½·¨ÖĞ½«¿ìÕÕ¸²¸Çµ½µ±Ç°ÄÚÈİ¡£
+æˆ‘ä»¬å®šä¹‰äº†textMementoç»“æ„ä½“ç”¨äºä¿å­˜å½“å‰å¿«ç…§ï¼Œå¹¶åœ¨Loadæ–¹æ³•ä¸­å°†å¿«ç…§è¦†ç›–åˆ°å½“å‰å†…å®¹ã€‚
 
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 package memento
 
 func ExampleText() {
-  text := &Text{
-    content: "how are you",
-  }
+	text := &Text{
+		content: "how are you",
+	}
 
-  text.Show()
-  progress := text.Save()
+	text.Show()
+	progress := text.Save()
 
-  text.Write("fine think you and you")
-  text.Show()
+	text.Write("fine think you and you")
+	text.Show()
 
-  text.Load(progress)
-  text.Show()
+	text.Load(progress)
+	text.Show()
 
-  // Output:
-  // content: how are you
-  // content: fine think you and you
-  // content: how are you
+	// Output:
+	// content: how are you
+	// content: fine think you and you
+	// content: how are you
 }
 ```

@@ -1,13 +1,13 @@
-# ����ģʽProxy
-## ����
-�������Ҫ�ڷ���һ������ʱ����һ���񡰴�����һ���Ľ�ɫ���������ڷ��ʶ���֮ǰΪ����л����顢Ȩ���жϵȷ��ʿ��ƣ��ڷ��ʶ���֮��Ϊ����н�����桢��־��¼�Ƚ����������ô�Ϳ��Կ���ʹ�ô���ģʽ��
+# 代理模式Proxy
+## 问题
+如果你需要在访问一个对象时，有一个像“代理”一样的角色，她可以在访问对象之前为你进行缓存检查、权限判断等访问控制，在访问对象之后为你进行结果缓存、日志记录等结果处理，那么就可以考虑使用代理模式。
 
-����һ��һЩweb��ܵ�routerģ�飬���ͻ��˷���һ���ӿ�ʱ��������ִ�ж�Ӧ�Ľӿ�֮ǰ��routerģ���ִ��һЩ��ǰ����������Ȩ���жϵȲ�������ִ��֮�󻹻��¼��־������ǵ��͵Ĵ���ģʽ��
+回忆一下一些web框架的router模块，当客户端访问一个接口时，在最终执行对应的接口之前，router模块会执行一些事前操作，进行权限判断等操作，在执行之后还会记录日志，这就是典型的代理模式。
 
-## ���
-����ģʽ��Ҫһ�������࣬�����ִ����ʵ��������ĳ�Ա���������ɴ�������������������ڡ�
+## 解决
+代理模式需要一个代理类，其包含执行真实对象所需的成员变量，并由代理类管理整个生命周期。
 
-�뿴���´��룺
+请看以下代码：
 ```go
 package proxy
 
@@ -17,7 +17,7 @@ type Subject interface {
   Proxy() string
 }
 
-// ����
+// 代理
 
 type Proxy struct {
   real RealSubject
@@ -26,19 +26,19 @@ type Proxy struct {
 func (p Proxy) Proxy() string {
   var res string
 
-  // �ڵ�����ʵ����֮ǰ����黺�棬�ж�Ȩ�ޣ��ȵ�
+  // 在调用真实对象之前，检查缓存，判断权限，等等
   p.real.Pre()
 
-  // ������ʵ����
+  // 调用真实对象
   p.real.Real()
 
-  // ����֮��Ĳ������绺�������Խ�����д������ȵ�
+  // 调用之后的操作，如缓存结果，对结果进行处理，等等
   p.real.After()
 
   return res
 }
 
-// ��ʵ����
+// 真实对象
 
 type RealSubject struct{}
 
@@ -54,18 +54,18 @@ func (RealSubject) After() {
   fmt.Print(":after")
 }
 ```
-���Ƕ����˴�����Proxy��ִ��Proxy֮���ڵ�����ʵ����Real֮ǰ�����ǻ��ȵ�����ǰ����Pre������ִ����ʵ����Real֮�󣬵����º����After��
+我们定义了代理类Proxy，执行Proxy之后，在调用真实对象Real之前，我们会先调用事前对象Pre，并在执行真实对象Real之后，调用事后对象After。
 
-���Դ��룺
+测试代码：
 ```go
 package proxy
 
 func ExampleProxy() {
-  var sub Subject
-  sub = &Proxy{}
-  sub.Proxy()
+	var sub Subject
+	sub = &Proxy{}
+	sub.Proxy()
 
-  // Output:
-  // pre:real:after
+	// Output:
+	// pre:real:after
 }
 ```

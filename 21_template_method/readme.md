@@ -1,9 +1,9 @@
-# Ä£°å·½·¨Ä£Ê½Template Method
-## ÎÊÌâ
-Ä£°å·½·¨Ä£Ê½¾ÍÊÇ½«Ëã·¨·Ö½âÎªÒ»ÏµÁĞ²½Öè£¬È»ºóÔÚÒ»¸öÄ£°æ·½·¨ÖĞÒÀ´Îµ÷ÓÃÕâĞ©²½Öè¡£ÕâÑù¿Í»§¶Ë¾Í²»ĞèÒªÁË½â¸÷¸ö²½ÖèµÄÊµÏÖÏ¸½Ú£¬Ö»ĞèÒªµ÷ÓÃÄ£°æ¼´¿É¡£
+# æ¨¡æ¿æ–¹æ³•æ¨¡å¼Template Method
+## é—®é¢˜
+æ¨¡æ¿æ–¹æ³•æ¨¡å¼å°±æ˜¯å°†ç®—æ³•åˆ†è§£ä¸ºä¸€ç³»åˆ—æ­¥éª¤ï¼Œç„¶ååœ¨ä¸€ä¸ªæ¨¡ç‰ˆæ–¹æ³•ä¸­ä¾æ¬¡è°ƒç”¨è¿™äº›æ­¥éª¤ã€‚è¿™æ ·å®¢æˆ·ç«¯å°±ä¸éœ€è¦äº†è§£å„ä¸ªæ­¥éª¤çš„å®ç°ç»†èŠ‚ï¼Œåªéœ€è¦è°ƒç”¨æ¨¡ç‰ˆå³å¯ã€‚
 
-## ½â¾ö
-Ò»¸ö·Ç³£¼òµ¥µÄÀı×Ó£¬Çë¿´ÒÔÏÂ´úÂë£º
+## è§£å†³
+ä¸€ä¸ªéå¸¸ç®€å•çš„ä¾‹å­ï¼Œè¯·çœ‹ä»¥ä¸‹ä»£ç ï¼š
 ```go
 package templatemethod
 
@@ -26,34 +26,34 @@ type A struct{}
 
 func (a *A) Print(name string) {
   fmt.Println("a: " + name)
-  // ÒµÎñ´úÂë¡­¡­
+  // ä¸šåŠ¡ä»£ç â€¦â€¦
 }
 
 type B struct{}
 
 func (b *B) Print(name string) {
   fmt.Println("b: " + name)
-  // ÒµÎñ´úÂë¡­¡­
+  // ä¸šåŠ¡ä»£ç â€¦â€¦
 }
 ```
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 package templatemethod
 
 func ExamplePrintTemplate() {
-  templateA := &A{}
-  template := &template{
-    isTemplate: templateA,
-    name:       "hi~",
-  }
-  template.Print()
+	templateA := &A{}
+	template := &template{
+		isTemplate: templateA,
+		name:       "hi~",
+	}
+	template.Print()
 
-  templateB := &B{}
-  template.isTemplate = templateB
-  template.Print()
+	templateB := &B{}
+	template.isTemplate = templateB
+	template.Print()
 
-  // Output:
-  // a: hi~
-  // b: hi~
+	// Output:
+	// a: hi~
+	// b: hi~
 }
 ```

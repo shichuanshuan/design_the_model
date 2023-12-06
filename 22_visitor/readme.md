@@ -1,9 +1,9 @@
-# ·ÃÎÊÕßÄ£Ê½Visitor
-## ÎÊÌâ
-·ÃÎÊÕßÄ£Ê½ÊÔÍ¼½â¾öÕâÑùÒ»¸öÎÊÌâ£ºÔÚ²»¸Ä±äÀàµÄ¶ÔÏó½á¹¹µÄÇ°ÌáÏÂÔö¼ÓĞÂµÄ²Ù×÷¡£
+# è®¿é—®è€…æ¨¡å¼Visitor
+## é—®é¢˜
+è®¿é—®è€…æ¨¡å¼è¯•å›¾è§£å†³è¿™æ ·ä¸€ä¸ªé—®é¢˜ï¼šåœ¨ä¸æ”¹å˜ç±»çš„å¯¹è±¡ç»“æ„çš„å‰æä¸‹å¢åŠ æ–°çš„æ“ä½œã€‚
 
-## ½â¾ö
-Çë¿´ÒÔÏÂ´úÂë£º
+## è§£å†³
+è¯·çœ‹ä»¥ä¸‹ä»£ç ï¼š
 ```go
 package visitor
 
@@ -50,27 +50,27 @@ func (a *radiusCalculator) visitForCircle(c *circle) {
   fmt.Println("circle radius")
 }
 ```
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 package visitor
 
 func ExampleShape() {
-  square := &square{}
-  circle := &circle{}
+	square := &square{}
+	circle := &circle{}
 
-  side := &sideCalculator{}
+	side := &sideCalculator{}
 
-  square.accept(side)
-  circle.accept(side)
+	square.accept(side)
+	circle.accept(side)
 
-  radius := &radiusCalculator{}
-  square.accept(radius)
-  circle.accept(radius)
+	radius := &radiusCalculator{}
+	square.accept(radius)
+	circle.accept(radius)
 
-  // Output:
-  // square side
-  // circle side
-  // square radius
-  // circle radius
+	// Output:
+	// square side
+	// circle side
+	// square radius
+	// circle radius
 }
 ```

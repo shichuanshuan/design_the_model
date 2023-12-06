@@ -1,11 +1,11 @@
-# ¶ÔÏóÊ÷Ä£Ê½Object Tree
-## ÎÊÌâ
-ÔÚÏîÄ¿ÖĞ£¬Èç¹ûÎÒÃÇĞèÒªÓÃµ½Ê÷×´½á¹¹£¬¾Í¿ÉÒÔÊ¹ÓÃ¶ÔÏóÊ÷Ä£Ê½¡£»»ÑÔÖ®£¬Èç¹ûÏîÄ¿µÄºËĞÄÄ£ĞÍ²»ÄÜÒÔÊ÷×´½á¹¹±íÊ¾£¬ÔòÃ»±ØÒªÊ¹ÓÃ¶ÔÏóÊ÷Ä£Ê½¡£
+# å¯¹è±¡æ ‘æ¨¡å¼Object Tree
+## é—®é¢˜
+åœ¨é¡¹ç›®ä¸­ï¼Œå¦‚æœæˆ‘ä»¬éœ€è¦ç”¨åˆ°æ ‘çŠ¶ç»“æ„ï¼Œå°±å¯ä»¥ä½¿ç”¨å¯¹è±¡æ ‘æ¨¡å¼ã€‚æ¢è¨€ä¹‹ï¼Œå¦‚æœé¡¹ç›®çš„æ ¸å¿ƒæ¨¡å‹ä¸èƒ½ä»¥æ ‘çŠ¶ç»“æ„è¡¨ç¤ºï¼Œåˆ™æ²¡å¿…è¦ä½¿ç”¨å¯¹è±¡æ ‘æ¨¡å¼ã€‚
 
-¶ÔÏóÊ÷Ä£Ê½µÄÓÃ´¦¾ÍÔÚÓÚ¿ÉÒÔÀûÓÃ¶àÌ¬ºÍµİ¹é»úÖÆ¸ü·½±ãµØÊ¹ÓÃ¸´ÔÓÊ÷½á¹¹
+å¯¹è±¡æ ‘æ¨¡å¼çš„ç”¨å¤„å°±åœ¨äºå¯ä»¥åˆ©ç”¨å¤šæ€å’Œé€’å½’æœºåˆ¶æ›´æ–¹ä¾¿åœ°ä½¿ç”¨å¤æ‚æ ‘ç»“æ„
 
-## ½â¾ö
-Çë¿´ÒÔÏÂ´úÂë:
+## è§£å†³
+è¯·çœ‹ä»¥ä¸‹ä»£ç :
 ```go
 package objecttree
 
@@ -97,37 +97,37 @@ func (c *Composite) Search(pre string) {
   }
 }
 ```
-ÔÚSearch·½·¨ÖĞÊ¹ÓÃµİ¹é´òÓ¡³öÁËÕû¿ÃÊ÷½á¹¹¡£
+åœ¨Searchæ–¹æ³•ä¸­ä½¿ç”¨é€’å½’æ‰“å°å‡ºäº†æ•´æ£µæ ‘ç»“æ„ã€‚
 
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 package objecttree
 
 func ExampleComposite() {
-  root := NewComponent(CompositeNode, "root")
-  c1 := NewComponent(CompositeNode, "c1")
-  c2 := NewComponent(CompositeNode, "c2")
-  c3 := NewComponent(CompositeNode, "c3")
+	root := NewComponent(CompositeNode, "root")
+	c1 := NewComponent(CompositeNode, "c1")
+	c2 := NewComponent(CompositeNode, "c2")
+	c3 := NewComponent(CompositeNode, "c3")
 
-  l1 := NewComponent(LeafNode, "l1")
-  l2 := NewComponent(LeafNode, "l2")
-  l3 := NewComponent(LeafNode, "l3")
+	l1 := NewComponent(LeafNode, "l1")
+	l2 := NewComponent(LeafNode, "l2")
+	l3 := NewComponent(LeafNode, "l3")
 
-  root.AddChild(c1)
-  root.AddChild(c2)
-  c1.AddChild(c3)
-  c1.AddChild(l1)
-  c2.AddChild(l2)
-  c2.AddChild(l3)
+	root.AddChild(c1)
+	root.AddChild(c2)
+	c1.AddChild(c3)
+	c1.AddChild(l1)
+	c2.AddChild(l2)
+	c2.AddChild(l3)
 
-  root.Search("")
-  // Output:
-  // +root
-  //  +c1
-  //   +c3
-  //leaf   -l1
-  //  +c2
-  //leaf   -l2
-  //leaf   -l3
+	root.Search("")
+	// Output:
+	// +root
+	//  +c1
+	//   +c3
+	//leaf   -l1
+	//  +c2
+	//leaf   -l2
+	//leaf   -l3
 }
 ```

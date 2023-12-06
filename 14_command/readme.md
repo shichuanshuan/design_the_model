@@ -1,17 +1,17 @@
-# ÃüÁîÄ£Ê½Command
-## ÎÊÌâ
-¼ÙÉèÄãÊµÏÖÁË¿ªÆôºÍ¹Ø±ÕµçÊÓ»úµÄ¹¦ÄÜ£¬Ëæ×ÅÒµÎñµü´ú£¬»¹ĞèÒªÊµÏÖ¿ªÆôºÍ¹Ø±Õ±ùÏäµÄ¹¦ÄÜ£¬¿ªÆôºÍ¹Ø±ÕµçµÆµÄ¹¦ÄÜ£¬¿ªÆôºÍ¹Ø±ÕÎ¢²¨Â¯µÄ¹¦ÄÜ¡­¡­ÕâĞ©¹¦ÄÜ¶¼»ùÓÚÄãµÄ»ùÀà£¬¿ªÆôºÍ¹Ø±Õ¡£Èç¹ûÄãÖ®ºó¶Ô»ùÀà½øĞĞĞŞ¸Ä£¬ºÜ¿ÉÄÜ»áÓ°Ïìµ½ÆäËû¹¦ÄÜ£¬ÕâÊ¹ÏîÄ¿±äµÃ²»ÎÈ¶¨ÁË¡£
+# å‘½ä»¤æ¨¡å¼Command
+## é—®é¢˜
+å‡è®¾ä½ å®ç°äº†å¼€å¯å’Œå…³é—­ç”µè§†æœºçš„åŠŸèƒ½ï¼Œéšç€ä¸šåŠ¡è¿­ä»£ï¼Œè¿˜éœ€è¦å®ç°å¼€å¯å’Œå…³é—­å†°ç®±çš„åŠŸèƒ½ï¼Œå¼€å¯å’Œå…³é—­ç”µç¯çš„åŠŸèƒ½ï¼Œå¼€å¯å’Œå…³é—­å¾®æ³¢ç‚‰çš„åŠŸèƒ½â€¦â€¦è¿™äº›åŠŸèƒ½éƒ½åŸºäºä½ çš„åŸºç±»ï¼Œå¼€å¯å’Œå…³é—­ã€‚å¦‚æœä½ ä¹‹åå¯¹åŸºç±»è¿›è¡Œä¿®æ”¹ï¼Œå¾ˆå¯èƒ½ä¼šå½±å“åˆ°å…¶ä»–åŠŸèƒ½ï¼Œè¿™ä½¿é¡¹ç›®å˜å¾—ä¸ç¨³å®šäº†ã€‚
 
-Ò»¸öÓÅĞãµÄÉè¼ÆÍùÍù»á¹Ø×¢ÓÚÈí¼şµÄ·Ö²ãÓë½âñî£¬ÃüÁîÄ£Ê½ÊÔÍ¼×öµ½ÕâÑùµÄ½á¹û£ºÈÃÃüÁîºÍ¶ÔÓ¦¹¦ÄÜ½âñî£¬²¢ÄÜ¸ù¾İ²»Í¬µÄÇëÇó½«Æä·½·¨²ÎÊı»¯¡£
+ä¸€ä¸ªä¼˜ç§€çš„è®¾è®¡å¾€å¾€ä¼šå…³æ³¨äºè½¯ä»¶çš„åˆ†å±‚ä¸è§£è€¦ï¼Œå‘½ä»¤æ¨¡å¼è¯•å›¾åšåˆ°è¿™æ ·çš„ç»“æœï¼šè®©å‘½ä»¤å’Œå¯¹åº”åŠŸèƒ½è§£è€¦ï¼Œå¹¶èƒ½æ ¹æ®ä¸åŒçš„è¯·æ±‚å°†å…¶æ–¹æ³•å‚æ•°åŒ–ã€‚
 
-## ½â¾ö
-»¹ÊÇÓÃ¿ªÆôºÍ¹Ø±Õ¼ÒÓÃµçÆ÷µÄÀı×ÓÀ´¾ÙÀı°É¡£Çë¿´ÒÔÏÂ´úÂë
+## è§£å†³
+è¿˜æ˜¯ç”¨å¼€å¯å’Œå…³é—­å®¶ç”¨ç”µå™¨çš„ä¾‹å­æ¥ä¸¾ä¾‹å§ã€‚è¯·çœ‹ä»¥ä¸‹ä»£ç 
 ```go
 package command
 
 import "fmt"
 
-// ÇëÇóÕß
+// è¯·æ±‚è€…
 
 type button struct {
   command command
@@ -21,7 +21,7 @@ func (b *button) press() {
   b.command.execute()
 }
 
-// ¾ßÌåÃüÁî½Ó¿Ú
+// å…·ä½“å‘½ä»¤æ¥å£
 
 type command interface {
   execute()
@@ -43,7 +43,7 @@ func (c *offCommand) execute() {
   c.device.off()
 }
 
-// ½ÓÊÕÕß
+// æ¥æ”¶è€…
 
 type device interface {
   on()
@@ -70,64 +70,64 @@ func (t *airConditioner) off() {
   fmt.Println("Turning air conditioner off")
 }
 ```
-ÎÒÃÇ·Ö±ğÊµÏÖÁËÇëÇóÕßbutton£¬ÃüÁî½Ó¿Úcommand£¬½ÓÊÕÕßdevice¡£ÇëÇóÕßbutton¾ÍÏñÊÇÄÇ¸ö¿ÉÒÔÖ´ĞĞ¿ªÆô»ò¹Ø±ÕµÄÒ£¿ØÆ÷£¬ÃüÁî½Ó¿ÚcommandÔòÊÇÒ»¸öÖĞ¼ä²ã£¬ËüÊ¹ÎÒÃÇµÄÇëÇóÕßºÍ½ÓÊÕÕß½âÅº¡£
+æˆ‘ä»¬åˆ†åˆ«å®ç°äº†è¯·æ±‚è€…buttonï¼Œå‘½ä»¤æ¥å£commandï¼Œæ¥æ”¶è€…deviceã€‚è¯·æ±‚è€…buttonå°±åƒæ˜¯é‚£ä¸ªå¯ä»¥æ‰§è¡Œå¼€å¯æˆ–å…³é—­çš„é¥æ§å™¨ï¼Œå‘½ä»¤æ¥å£commandåˆ™æ˜¯ä¸€ä¸ªä¸­é—´å±‚ï¼Œå®ƒä½¿æˆ‘ä»¬çš„è¯·æ±‚è€…å’Œæ¥æ”¶è€…è§£è—•ã€‚
 
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 package command
 
 func ExampleCommand() {
-  Tv()
-  AirConditioner()
+	Tv()
+	AirConditioner()
 
-  // Output:
-  // Turning tv on
-  // Turning tv off
-  // Turning air conditioner on
-  // Turning air conditioner off
+	// Output:
+	// Turning tv on
+	// Turning tv off
+	// Turning air conditioner on
+	// Turning air conditioner off
 }
 
 func Tv() {
-  tv := &tv{}
+	tv := &tv{}
 
-  onTvCommand := &onCommand{
-    device: tv,
-  }
+	onTvCommand := &onCommand{
+		device: tv,
+	}
 
-  offTvCommand := &offCommand{
-    device: tv,
-  }
+	offTvCommand := &offCommand{
+		device: tv,
+	}
 
-  onTvButton := &button{
-    command: onTvCommand,
-  }
-  onTvButton.press()
+	onTvButton := &button{
+		command: onTvCommand,
+	}
+	onTvButton.press()
 
-  offTvButton := &button{
-    command: offTvCommand,
-  }
-  offTvButton.press()
+	offTvButton := &button{
+		command: offTvCommand,
+	}
+	offTvButton.press()
 }
 
 func AirConditioner() {
-  airConditioner := &airConditioner{}
+	airConditioner := &airConditioner{}
 
-  onAirConditionerCommand := &onCommand{
-    device: airConditioner,
-  }
+	onAirConditionerCommand := &onCommand{
+		device: airConditioner,
+	}
 
-  offAirConditionerCommand := &offCommand{
-    device: airConditioner,
-  }
+	offAirConditionerCommand := &offCommand{
+		device: airConditioner,
+	}
 
-  onAirConditionerButton := &button{
-    command: onAirConditionerCommand,
-  }
-  onAirConditionerButton.press()
+	onAirConditionerButton := &button{
+		command: onAirConditionerCommand,
+	}
+	onAirConditionerButton.press()
 
-  offAirConditionerButton := &button{
-    command: offAirConditionerCommand,
-  }
-  offAirConditionerButton.press()
+	offAirConditionerButton := &button{
+		command: offAirConditionerCommand,
+	}
+	offAirConditionerButton.press()
 }
 ```

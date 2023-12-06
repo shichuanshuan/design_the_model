@@ -1,11 +1,11 @@
-# ÔðÈÎÁ´Ä£Ê½Chain of Responsibility
-## ÎÊÌâ
-¼ÙÉèÎÒÃÇÒªÈÃ³ÌÐò°´ÕÕÖ¸¶¨µÄ²½ÖèÖ´ÐÐ£¬²¢ÇÒÕâ¸ö²½ÖèµÄË³Ðò²»ÊÇ¹Ì¶¨µÄ£¬¶øÊÇ¿ÉÒÔ¸ù¾Ý²»Í¬ÐèÇó¸Ä±äµÄ£¬Ã¿¸ö²½Öè¶¼»á¶ÔÇëÇó½øÐÐÒ»Ð©´¦Àí£¬²¢½«½á¹û´«µÝ¸øÏÂÒ»¸ö²½ÖèµÄ´¦ÀíÕß£¬¾ÍÏñÒ»ÌõÁ÷Ë®ÏßÒ»Ñù£¬ÎÒÃÇ¸ÃÈçºÎÊµÏÖ£¿
+# è´£ä»»é“¾æ¨¡å¼Chain of Responsibility
+## é—®é¢˜
+å‡è®¾æˆ‘ä»¬è¦è®©ç¨‹åºæŒ‰ç…§æŒ‡å®šçš„æ­¥éª¤æ‰§è¡Œï¼Œå¹¶ä¸”è¿™ä¸ªæ­¥éª¤çš„é¡ºåºä¸æ˜¯å›ºå®šçš„ï¼Œè€Œæ˜¯å¯ä»¥æ ¹æ®ä¸åŒéœ€æ±‚æ”¹å˜çš„ï¼Œæ¯ä¸ªæ­¥éª¤éƒ½ä¼šå¯¹è¯·æ±‚è¿›è¡Œä¸€äº›å¤„ç†ï¼Œå¹¶å°†ç»“æžœä¼ é€’ç»™ä¸‹ä¸€ä¸ªæ­¥éª¤çš„å¤„ç†è€…ï¼Œå°±åƒä¸€æ¡æµæ°´çº¿ä¸€æ ·ï¼Œæˆ‘ä»¬è¯¥å¦‚ä½•å®žçŽ°ï¼Ÿ
 
-µ±Óöµ½ÕâÖÖ±ØÐë°´Ë³ÐòÖ´ÐÐ¶à¸ö´¦ÀíÕß£¬²¢ÇÒ´¦ÀíÕßµÄË³Ðò¿ÉÒÔ¸Ä±äµÄÐèÇó£¬ÎÒÃÇ¿ÉÒÔ¿¼ÂÇÊ¹ÓÃÔðÈÎÁ´Ä£Ê½¡£
+å½“é‡åˆ°è¿™ç§å¿…é¡»æŒ‰é¡ºåºæ‰§è¡Œå¤šä¸ªå¤„ç†è€…ï¼Œå¹¶ä¸”å¤„ç†è€…çš„é¡ºåºå¯ä»¥æ”¹å˜çš„éœ€æ±‚ï¼Œæˆ‘ä»¬å¯ä»¥è€ƒè™‘ä½¿ç”¨è´£ä»»é“¾æ¨¡å¼ã€‚
 
-## ½â¾ö
-ÔðÈÎÁ´Ä£Ê½Ê¹ÓÃÁËÀàËÆÁ´±íµÄ½á¹¹¡£Çë¿´ÒÔÏÂ´úÂë£º
+## è§£å†³
+è´£ä»»é“¾æ¨¡å¼ä½¿ç”¨äº†ç±»ä¼¼é“¾è¡¨çš„ç»“æž„ã€‚è¯·çœ‹ä»¥ä¸‹ä»£ç ï¼š
 ```go
 package chain
 
@@ -75,9 +75,9 @@ type Do struct {
   endPartDone bool
 }
 ```
-ÎÒÃÇÊµÏÖÁË·½·¨executeºÍsetNext£¬²¢¶¨ÒåÁËaPart¡¢bPart¡¢endPartÕâ3¸ö´¦ÀíÕß£¬Ã¿¸ö´¦ÀíÕß¶¼¿ÉÒÔÍ¨¹ýexecute·½·¨Ö´ÐÐÆä¶ÔÓ¦µÄÒµÎñ´úÂë£¬²¢¿ÉÒÔÍ¨¹ýsetNext·½·¨¾ö¶¨ÏÂÒ»¸ö´¦ÀíÕßÊÇË­¡£³ýÁËendPartÊÇ×îÖÕµÄ´¦ÀíÕßÖ®Íâ£¬ÔÚËüÖ®Ç°µÄ´¦ÀíÕßaPart¡¢bPartµÄË³Ðò¶¼¿ÉÒÔÈÎÒâµ÷Õû¡£
+æˆ‘ä»¬å®žçŽ°äº†æ–¹æ³•executeå’ŒsetNextï¼Œå¹¶å®šä¹‰äº†aPartã€bPartã€endPartè¿™3ä¸ªå¤„ç†è€…ï¼Œæ¯ä¸ªå¤„ç†è€…éƒ½å¯ä»¥é€šè¿‡executeæ–¹æ³•æ‰§è¡Œå…¶å¯¹åº”çš„ä¸šåŠ¡ä»£ç ï¼Œå¹¶å¯ä»¥é€šè¿‡setNextæ–¹æ³•å†³å®šä¸‹ä¸€ä¸ªå¤„ç†è€…æ˜¯è°ã€‚é™¤äº†endPartæ˜¯æœ€ç»ˆçš„å¤„ç†è€…ä¹‹å¤–ï¼Œåœ¨å®ƒä¹‹å‰çš„å¤„ç†è€…aPartã€bPartçš„é¡ºåºéƒ½å¯ä»¥ä»»æ„è°ƒæ•´ã€‚
 
-Çë¿´ÒÔÏÂ²âÊÔ´úÂë£º
+è¯·çœ‹ä»¥ä¸‹æµ‹è¯•ä»£ç ï¼š
 ```go
 func ExampleChain() {
   startPart := &endPart{}
@@ -97,23 +97,23 @@ func ExampleChain() {
   // endPart
 }
 ```
-ÎÒÃÇÒ²¿ÉÒÔµ÷Õû´¦ÀíÕßµÄÖ´ÐÐË³Ðò£º
+æˆ‘ä»¬ä¹Ÿå¯ä»¥è°ƒæ•´å¤„ç†è€…çš„æ‰§è¡Œé¡ºåºï¼š
 ```go
 func ExampleChain2() {
-  startPart := &endPart{}
+startPart := &endPart{}
 
-  bPart := &bPart{}
-  bPart.setNext(startPart)
+bPart := &bPart{}
+bPart.setNext(startPart)
 
-  aPart := &aPart{}
-  aPart.setNext(bPart)
+aPart := &aPart{}
+aPart.setNext(bPart)
 
-  do := &Do{}
-  aPart.execute(do)
+do := &Do{}
+aPart.execute(do)
 
-  // Output:
-  // aPart
-  // bPart
-  // endPart
+// Output:
+// aPart
+// bPart
+// endPart
 }
 ```

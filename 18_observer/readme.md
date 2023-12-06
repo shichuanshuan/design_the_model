@@ -1,17 +1,17 @@
-# ¹Û²ìÕßÄ£Ê½Observer
-## ÎÊÌâ
-Èç¹ûÄãĞèÒªÔÚÒ»¸ö¶ÔÏóµÄ×´Ì¬±»¸Ä±äÊ±£¬ÆäËû¶ÔÏóÄÜ×÷ÎªÆä¡°¹Û²ìÕß¡±¶ø±»Í¨Öª£¬¾Í¿ÉÒÔÊ¹ÓÃ¹Û²ìÕßÄ£Ê½¡£
+# è§‚å¯Ÿè€…æ¨¡å¼Observer
+## é—®é¢˜
+å¦‚æœä½ éœ€è¦åœ¨ä¸€ä¸ªå¯¹è±¡çš„çŠ¶æ€è¢«æ”¹å˜æ—¶ï¼Œå…¶ä»–å¯¹è±¡èƒ½ä½œä¸ºå…¶â€œè§‚å¯Ÿè€…â€è€Œè¢«é€šçŸ¥ï¼Œå°±å¯ä»¥ä½¿ç”¨è§‚å¯Ÿè€…æ¨¡å¼ã€‚
 
-ÎÒÃÇ½«×ÔÉíµÄ×´Ì¬¸Ä±ä¾Í»áÍ¨Öª¸øÆäËû¶ÔÏóµÄ¶ÔÏó³ÆÎª¡°·¢²¼Õß¡±£¬¹Ø×¢·¢²¼Õß×´Ì¬±ä»¯µÄ¶ÔÏóÔò³ÆÎª¡°¶©ÔÄÕß¡±¡£
+æˆ‘ä»¬å°†è‡ªèº«çš„çŠ¶æ€æ”¹å˜å°±ä¼šé€šçŸ¥ç»™å…¶ä»–å¯¹è±¡çš„å¯¹è±¡ç§°ä¸ºâ€œå‘å¸ƒè€…â€ï¼Œå…³æ³¨å‘å¸ƒè€…çŠ¶æ€å˜åŒ–çš„å¯¹è±¡åˆ™ç§°ä¸ºâ€œè®¢é˜…è€…â€ã€‚
 
-## ½â¾ö
-Çë¿´ÒÔÏÂ´úÂë£º
+## è§£å†³
+è¯·çœ‹ä»¥ä¸‹ä»£ç ï¼š
 ```go
 package observer
 
 import "fmt"
 
-// ·¢²¼Õß
+// å‘å¸ƒè€…
 
 type Subject struct {
   observers []Observer
@@ -24,20 +24,20 @@ func NewSubject() *Subject {
   }
 }
 
-// Ìí¼Ó¶©ÔÄÕß
+// æ·»åŠ è®¢é˜…è€…
 
 func (s *Subject) AddObserver(o Observer) {
   s.observers = append(s.observers, o)
 }
 
-// ¸Ä±ä·¢²¼ÕßµÄ×´Ì¬
+// æ”¹å˜å‘å¸ƒè€…çš„çŠ¶æ€
 
 func (s *Subject) UpdateContext(content string) {
   s.content = content
   s.notify()
 }
 
-// Í¨Öª¶©ÔÄÕß½Ó¿Ú
+// é€šçŸ¥è®¢é˜…è€…æ¥å£
 
 type Observer interface {
   Do(*Subject)
@@ -49,7 +49,7 @@ func (s *Subject) notify() {
   }
 }
 
-// ¶©ÔÄÕß
+// è®¢é˜…è€…
 
 type Reader struct {
   name string
@@ -65,25 +65,25 @@ func (r *Reader) Do(s *Subject) {
   fmt.Println(r.name + " get " + s.content)
 }
 ```
-ºÜ¼òµ¥£¬ÎÒÃÇÖ»ÒªÊµÏÖÒ»¸öÍ¨Öªnotify·½·¨£¬ÔÚ·¢²¼ÕßµÄ×´Ì¬¸Ä±äÊ±Ö´ĞĞ¼´¿É¡£
+å¾ˆç®€å•ï¼Œæˆ‘ä»¬åªè¦å®ç°ä¸€ä¸ªé€šçŸ¥notifyæ–¹æ³•ï¼Œåœ¨å‘å¸ƒè€…çš„çŠ¶æ€æ”¹å˜æ—¶æ‰§è¡Œå³å¯ã€‚
 
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 package observer
 
 func ExampleObserver() {
-  subject := NewSubject()
+	subject := NewSubject()
 
-  boy := NewReader("Ğ¡Ã÷")
-  girl := NewReader("Ğ¡ÃÀ")
+	boy := NewReader("å°æ˜")
+	girl := NewReader("å°ç¾")
 
-  subject.AddObserver(boy)
-  subject.AddObserver(girl)
+	subject.AddObserver(boy)
+	subject.AddObserver(girl)
 
-  subject.UpdateContext("hi~")
+	subject.UpdateContext("hi~")
 
-  // Output:
-  // Ğ¡Ã÷ get hi~
-  // Ğ¡ÃÀ get hi~
+	// Output:
+	// å°æ˜ get hi~
+	// å°ç¾ get hi~
 }
 ```

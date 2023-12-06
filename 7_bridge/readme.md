@@ -1,31 +1,31 @@
-# �Ž�ģʽBridge
-## ����
+# 桥接模式Bridge
+## 问题
 
-����һ��ʼҵ����Ҫ���ַ�����Ϣ��������sms��email�����ǿ��Էֱ�ʵ��sms��email�����ӿڡ�
+假设一开始业务需要两种发送信息的渠道，sms和email，我们可以分别实现sms和email两个接口。
 
-֮������ҵ��������ֲ������µ�������Ҫ�ṩ����ϵͳ���ͷ�ʽ��systemA��systemB������������ϵͳ���ͷ�ʽ��Ӧ��֧��sms��email������
+之后随着业务迭代，又产生了新的需求，需要提供两种系统发送方式，systemA和systemB，并且这两种系统发送方式都应该支持sms和email渠道。
 
-��ʱ������Ҫ�ṩ4�ַ�����systemA to sms��systemA to email��systemB to sms��systemB to email��
+此时至少需要提供4种方法：systemA to sms，systemA to email，systemB to sms，systemB to email。
 
-����ٷֱ�����һ��������һ��ϵͳ���ͷ�ʽ������Ҫ�ṩ9�ַ������⽫���´���ĸ��ӳ̶�ָ��������
+如果再分别增加一种渠道和一种系统发送方式，就需要提供9种方法。这将导致代码的复杂程度指数增长。
 
-## ���
-��ʵ֮ǰ���������ü̳е��뷨�������⣬�Ž�ģʽ��ϣ�����̳й�ϵת��Ϊ������ϵ��ʹ������������ڡ�
+## 解决
+其实之前我们是在用继承的想法来看问题，桥接模式则希望将继承关系转变为关联关系，使两个类独立存在。
 
-��ϸ˵һ�£�
+详细说一下：
 
-�Ž�ģʽ��Ҫ�������ʵ�����ֿ���
-�Ž�ģʽ��Ҫ�����������͡�ϵͳ���ͷ�ʽ��������������ֿ���
-����ڡ�ϵͳ���ͷ�ʽ����������á��������ĳ���ӿڣ�ʹ���ǴӼ̳й�ϵת��Ϊ������ϵ��
-��һ�仰�ܽ��Ž�ģʽ��������ǣ�����������ʵ�ֽ������ͬ���ļ̳й�ϵ��Ϊ������ϵ�� ��
+桥接模式需要将抽象和实现区分开；
+桥接模式需要将“渠道”和“系统发送方式”这两种类别区分开；
+最后在“系统发送方式”的类里调用“渠道”的抽象接口，使他们从继承关系转变为关联关系。
+用一句话总结桥接模式的理念，就是：“将抽象与实现解耦，将不同类别的继承关系改为关联关系。 ”
 
-�뿴���´��룺
+请看以下代码：
 ```go
 package bridge
 
 import "fmt"
 
-// ���ַ�����Ϣ�ķ���
+// 两种发送消息的方法
 
 type SendMessage interface {
   send(text, to string)
@@ -51,7 +51,7 @@ func (*email) send(text, to string) {
   fmt.Println(fmt.Sprintf("send %s to %s email", text, to))
 }
 
-// ���ַ���ϵͳ
+// 两种发送系统
 
 type systemA struct {
   method SendMessage
@@ -81,9 +81,9 @@ func (m *systemB) SendMessage(text, to string) {
   m.method.send(fmt.Sprintf("[System B] %s", text), to)
 }
 ```
-���Կ��������ȶ�����sms��email����ʵ�֣��Լ��ӿ�SendMessage����������ʵ����systemA��systemB���������˳���ӿ�SendMessage��
+可以看到我们先定义了sms和email二种实现，以及接口SendMessage。接着我们实现了systemA和systemB，并调用了抽象接口SendMessage。
 
-���Դ��룺
+测试代码：
 ```go
 package bridge
 
@@ -103,4 +103,4 @@ func ExampleSystemB() {
   // send [System B] hi to baby email
 }
 ```
-�������Ҫ��ֻ�����һ�����ж��ع��ܵĸ����࣬����ʹ���Ž�ģʽ��
+如果你想要拆分或重组一个具有多重功能的复杂类，可以使用桥接模式。

@@ -1,19 +1,19 @@
-# µü´úÆ÷Ä£Ê½Iterator
-## ÎÊÌâ
-µü´úÆ÷Ä£Ê½ÓÃÓÚ±éÀú¼¯ºÏÖĞµÄÔªËØ£¬ÎŞÂÛ¼¯ºÏµÄÊı¾İ½á¹¹ÊÇÔõÑùµÄ¡£
+# è¿­ä»£å™¨æ¨¡å¼Iterator
+## é—®é¢˜
+è¿­ä»£å™¨æ¨¡å¼ç”¨äºéå†é›†åˆä¸­çš„å…ƒç´ ï¼Œæ— è®ºé›†åˆçš„æ•°æ®ç»“æ„æ˜¯æ€æ ·çš„ã€‚
 
-## ½â¾ö
-Çë¿´ÒÔÏÂ´úÂë
+## è§£å†³
+è¯·çœ‹ä»¥ä¸‹ä»£ç 
 ```go
 package iterator
 
-// ¼¯ºÏ½Ó¿Ú
+// é›†åˆæ¥å£
 
 type collection interface {
   createIterator() iterator
 }
 
-// ¾ßÌåµÄ¼¯ºÏ
+// å…·ä½“çš„é›†åˆ
 
 type part struct {
   title  string
@@ -31,14 +31,14 @@ func (u *partCollection) createIterator() iterator {
   }
 }
 
-// µü´úÆ÷
+// è¿­ä»£å™¨
 
 type iterator interface {
   hasNext() bool
   getNext() *part
 }
 
-// ¾ßÌåµÄµü´úÆ÷
+// å…·ä½“çš„è¿­ä»£å™¨
 
 type partIterator struct {
   index int
@@ -61,36 +61,36 @@ func (u *partIterator) getNext() *part {
   return nil
 }
 ```
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 func ExampleIterator() {
-  part1 := &part{
-    title:  "part1",
-    number: 10,
-  }
-  part2 := &part{
-    title:  "part2",
-    number: 20,
-  }
-  part3 := &part{
-    title:  "part3",
-    number: 30,
-  }
+part1 := &part{
+title:  "part1",
+number: 10,
+}
+part2 := &part{
+title:  "part2",
+number: 20,
+}
+part3 := &part{
+title:  "part3",
+number: 30,
+}
 
-  partCollection := &partCollection{
-    parts: []*part{part1, part2, part3},
-  }
+partCollection := &partCollection{
+parts: []*part{part1, part2, part3},
+}
 
-  iterator := partCollection.createIterator()
+iterator := partCollection.createIterator()
 
-  for iterator.hasNext() {
-    part := iterator.getNext()
-    fmt.Println(part)
-  }
+for iterator.hasNext() {
+part := iterator.getNext()
+fmt.Println(part)
+}
 
-  // Output:
-  // &{part1 10}
-  // &{part2 20}
-  // &{part3 30}
+// Output:
+// &{part1 10}
+// &{part2 20}
+// &{part3 30}
 }
 ```

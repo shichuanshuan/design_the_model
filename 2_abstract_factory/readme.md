@@ -1,17 +1,17 @@
-# ³éÏó¹¤³§Ä£Ê½ Abstract Factory
-## ÎÊÌâ
-³éÏó¹¤³§Ä£Ê½»ùÓÚ¹¤³§·½·¨Ä£Ê½¡£Á½ÕßµÄÇø±ğÔÚÓÚ£º¹¤³§·½·¨Ä£Ê½ÊÇ´´½¨³öÒ»ÖÖ²úÆ·£¬¶ø³éÏó¹¤³§Ä£Ê½ÊÇ´´½¨³öÒ»Àà²úÆ·¡£Õâ¶şÖÖ¶¼ÊôÓÚ¹¤³§Ä£Ê½£¬ÔÚÉè¼ÆÉÏÊÇÏàËÆµÄ¡£
+# æŠ½è±¡å·¥å‚æ¨¡å¼ Abstract Factory
+## é—®é¢˜
+æŠ½è±¡å·¥å‚æ¨¡å¼åŸºäºå·¥å‚æ–¹æ³•æ¨¡å¼ã€‚ä¸¤è€…çš„åŒºåˆ«åœ¨äºï¼šå·¥å‚æ–¹æ³•æ¨¡å¼æ˜¯åˆ›å»ºå‡ºä¸€ç§äº§å“ï¼Œè€ŒæŠ½è±¡å·¥å‚æ¨¡å¼æ˜¯åˆ›å»ºå‡ºä¸€ç±»äº§å“ã€‚è¿™äºŒç§éƒ½å±äºå·¥å‚æ¨¡å¼ï¼Œåœ¨è®¾è®¡ä¸Šæ˜¯ç›¸ä¼¼çš„ã€‚
 
-¼ÙÉè£¬ÓĞÒ»¸ö´æ´¢¹¤³§£¬Ìá¹©redisºÍmysqlÁ½ÖÖ´æ´¢Êı¾İµÄ·½Ê½¡£Èç¹ûÊ¹ÓÃ¹¤³§·½·¨Ä£Ê½£¬ÎÒÃÇ¾ÍĞèÒªÒ»¸ö´æ´¢¹¤³§£¬²¢Ìá¹©SaveRedis·½·¨ºÍSaveMysql·½·¨¡£
+å‡è®¾ï¼Œæœ‰ä¸€ä¸ªå­˜å‚¨å·¥å‚ï¼Œæä¾›rediså’Œmysqlä¸¤ç§å­˜å‚¨æ•°æ®çš„æ–¹å¼ã€‚å¦‚æœä½¿ç”¨å·¥å‚æ–¹æ³•æ¨¡å¼ï¼Œæˆ‘ä»¬å°±éœ€è¦ä¸€ä¸ªå­˜å‚¨å·¥å‚ï¼Œå¹¶æä¾›SaveRedisæ–¹æ³•å’ŒSaveMysqlæ–¹æ³•ã€‚
 
-## ½â¾ö
-ÒÔÉÏÎÄµÄ´æ´¢¹¤³§ÒµÎñÎªÀı£¬ÓÃ³éÏó¹¤³§Ä£Ê½µÄË¼Â·À´Éè¼Æ´úÂë£¬¾ÍÏñÏÂÃæÕâÑù
+## è§£å†³
+ä»¥ä¸Šæ–‡çš„å­˜å‚¨å·¥å‚ä¸šåŠ¡ä¸ºä¾‹ï¼Œç”¨æŠ½è±¡å·¥å‚æ¨¡å¼çš„æ€è·¯æ¥è®¾è®¡ä»£ç ï¼Œå°±åƒä¸‹é¢è¿™æ ·
 ```go
 package abstractfactory
 
 import "fmt"
 
-// SaveArticle ³éÏóÄ£Ê½¹¤³§½Ó¿Ú
+// SaveArticle æŠ½è±¡æ¨¡å¼å·¥å‚æ¥å£
 type SaveArticle interface {
   CreateProse() Prose
   CreateAncientPoetry() AncientPoetry
@@ -37,12 +37,12 @@ func (*SaveMysql) CreateAncientPoetry() AncientPoetry {
   return &MysqlProse{}
 }
 
-// Prose É¢ÎÄ
+// Prose æ•£æ–‡
 type Prose interface {
   SaveProse()
 }
 
-// AncientPoetry ¹ÅÊ«
+// AncientPoetry å¤è¯—
 type AncientPoetry interface {
   SaveAncientPoetry()
 }
@@ -67,35 +67,35 @@ func (*MysqlProse) SaveAncientPoetry() {
   fmt.Println("Mysql Save Ancient Poetry")
 }
 ```
-ÎÒÃÇ¶¨ÒåÁË´æ´¢¹¤³§£¬Ò²¾ÍÊÇSaveArticle½Ó¿Ú£¬²¢ÊµÏÖÁËCreateProse·½·¨ºÍCreateAncientPoetry·½·¨£¬Õâ2¸ö·½·¨·Ö±ğÓÃÓÚ´´½¨É¢ÎÄ¹¤³§ºÍ¹ÅÊ«¹¤³§¡£
+æˆ‘ä»¬å®šä¹‰äº†å­˜å‚¨å·¥å‚ï¼Œä¹Ÿå°±æ˜¯SaveArticleæ¥å£ï¼Œå¹¶å®ç°äº†CreateProseæ–¹æ³•å’ŒCreateAncientPoetryæ–¹æ³•ï¼Œè¿™2ä¸ªæ–¹æ³•åˆ†åˆ«ç”¨äºåˆ›å»ºæ•£æ–‡å·¥å‚å’Œå¤è¯—å·¥å‚ã€‚
 
-È»ºóÎÒÃÇÓÖ·Ö±ğÎªÉ¢ÎÄ¹¤³§ºÍ¹ÅÊ«¹¤³§ÊµÏÖÁËSaveProse·½·¨ºÍSaveAncientPoetry·½·¨£¬²¢ÓÃRedis½á¹¹ÌåºÍMysql½á¹¹Ìå·Ö±ğÖØĞ´ÁË2ÖÖ´æ´¢·½·¨¡£
+ç„¶åæˆ‘ä»¬åˆåˆ†åˆ«ä¸ºæ•£æ–‡å·¥å‚å’Œå¤è¯—å·¥å‚å®ç°äº†SaveProseæ–¹æ³•å’ŒSaveAncientPoetryæ–¹æ³•ï¼Œå¹¶ç”¨Redisç»“æ„ä½“å’ŒMysqlç»“æ„ä½“åˆ†åˆ«é‡å†™äº†2ç§å­˜å‚¨æ–¹æ³•ã€‚
 
-²âÊÔ´úÂë£º
+æµ‹è¯•ä»£ç ï¼š
 ```go
 package abstractfactory
 
 func Save(saveArticle SaveArticle) {
-  saveArticle.CreateProse().SaveProse()
-  saveArticle.CreateAncientPoetry().SaveAncientPoetry()
+	saveArticle.CreateProse().SaveProse()
+	saveArticle.CreateAncientPoetry().SaveAncientPoetry()
 }
 
 func ExampleSaveRedis() {
-  var factory SaveArticle
-  factory = &SaveRedis{}
-  Save(factory)
-  // Output:
-  // Redis Save Prose
-  // Redis Save Ancient Poetry
+	var factory SaveArticle
+	factory = &SaveRedis{}
+	Save(factory)
+	// Output:
+	// Redis Save Prose
+	// Redis Save Ancient Poetry
 }
 
 func ExampleSaveMysql() {
-  var factory SaveArticle
-  factory = &SaveMysql{}
-  Save(factory)
-  // Output:
-  // Mysql Save Prose
-  // Mysql Save Ancient Poetry
+	var factory SaveArticle
+	factory = &SaveMysql{}
+	Save(factory)
+	// Output:
+	// Mysql Save Prose
+	// Mysql Save Ancient Poetry
 }
 
 ```
